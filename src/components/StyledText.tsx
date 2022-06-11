@@ -17,11 +17,10 @@ interface StyledTextProps {
 
 const CustomText = styled(Text)<Partial<StyledTextProps>>`
   display: flex;
-  align-self: flex-start;
 
   ${(props) => {
     const style = {
-      margin: '20px 0 0 0',
+      margin: '',
       color: COLOR.COMMON,
       fontSize: '20px',
       fontWeight: 'normal'

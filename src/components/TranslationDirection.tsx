@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components/native';
 
 // Components
-import { Pressable, View } from 'react-native';
+import { Image, Pressable, View } from 'react-native';
 import StyledText from './StyledText';
 
 // Constants & Enums
@@ -20,10 +20,30 @@ interface TranslationDirectionProps {
 const StyledView = styled(View)`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
 
   margin-top: 20px;
+`;
+
+const StyledImage = styled(Image)`
+  width: 24px;
+  height: 24px;
+`;
+
+const Button = styled(Pressable)`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  width: 32px;
+  height: 32px;
+  border-radius: 2px;
+`;
+
+const StyledTextContainer = styled(View)`
+  width: 80px;
 `;
 
 const TranslationDirection = (props: TranslationDirectionProps) => {
@@ -36,8 +56,10 @@ const TranslationDirection = (props: TranslationDirectionProps) => {
 
   return (
     <StyledView>
-      <StyledText label={sourceLanguage} />
-      <Pressable
+      <StyledTextContainer>
+        <StyledText label={sourceLanguage} />
+      </StyledTextContainer>
+      <Button
         onPress={() => changeTranslationDirection()}
         style={({ pressed }) => [
           {
@@ -45,9 +67,11 @@ const TranslationDirection = (props: TranslationDirectionProps) => {
           }
         ]}
       >
-        <StyledText buttonLabel label="CHANGE" />
-      </Pressable>
-      <StyledText label={destinationLanguage} />
+        <StyledImage source={require('./../assets/change.png')} />
+      </Button>
+      <StyledTextContainer>
+        <StyledText label={destinationLanguage} />
+      </StyledTextContainer>
     </StyledView>
   );
 };
