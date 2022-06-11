@@ -1,20 +1,25 @@
 // React
 import React, { useState } from 'react';
 
+// Commons
+import { Language } from '../common/constants/enums';
+
+// Hooks
+import { useTranslate } from '../hooks/useTranslate';
+
 // Components
-import { View, Button, Text } from 'react-native';
+import { View, Text } from 'react-native';
 import StyledText from '../components/StyledText';
 import StyledInput from '../components/StyledInput';
 import TranslationDirection from '../components/TranslationDirection';
-import { Language } from '../common/constants/enums';
-import { useTranslate } from '../hooks/useTranslate';
+import TranslateButton from '../components/button/TranslateButton';
 
 const Translate = () => {
   const [translatedText, translate] = useTranslate();
 
   const [sourceLanguage, setSourceLanguage] = useState<Language>(Language.TR);
   const [destinationLanguage, setDestinationLanguage] = useState<Language>(Language.EN);
-  const [text, setText] = useState('deneme');
+  const [text, setText] = useState('');
 
   return (
     <View>
@@ -26,9 +31,14 @@ const Translate = () => {
         destinationLanguage={destinationLanguage}
         setDestinationLanguage={setDestinationLanguage}
       />
-      <Text>{translatedText}</Text>
+      <TranslateButton
+        translate={translate}
+        text={text}
+        sourceLanguage={sourceLanguage}
+        destinationLanguage={destinationLanguage}
+      />
 
-      <Button onPress={() => translate(sourceLanguage, destinationLanguage, text)} title="TRANSLATE" />
+      <Text>{translatedText}</Text>
     </View>
   );
 };

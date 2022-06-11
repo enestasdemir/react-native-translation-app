@@ -9,9 +9,11 @@ export const useTranslate = () => {
     let apiResponse: any;
 
     try {
-      apiResponse = await translateText(language, targetLanguage, text);
+      if (text.trim()) {
+        apiResponse = await translateText(language, targetLanguage, text);
 
-      setTranslatedText(apiResponse);
+        setTranslatedText(apiResponse);
+      }
     } catch (error) {
       apiResponse = error;
 
