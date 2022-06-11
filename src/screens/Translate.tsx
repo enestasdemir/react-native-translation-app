@@ -8,11 +8,12 @@ import { Language } from '../common/constants/enums';
 import { useTranslate } from '../hooks/useTranslate';
 
 // Components
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import StyledText from '../components/StyledText';
 import StyledInput from '../components/StyledInput';
 import TranslationDirection from '../components/TranslationDirection';
 import TranslateButton from '../components/button/TranslateButton';
+import TranslatedText from '../components/TranslatedText';
 
 const Translate = () => {
   const [translatedText, translate] = useTranslate();
@@ -37,8 +38,7 @@ const Translate = () => {
         sourceLanguage={sourceLanguage}
         destinationLanguage={destinationLanguage}
       />
-
-      <Text>{translatedText}</Text>
+      <TranslatedText translatedText={translatedText} />
     </View>
   );
 };
