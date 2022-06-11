@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { translateText } from '../common/api/api';
+import { translateText } from '../api/api';
 import { Language } from '../common/constants/enums';
 
 export const useTranslate = () => {

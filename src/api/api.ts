@@ -1,4 +1,4 @@
-import { Language } from '../constants/enums';
+import { Language } from '../common/constants/enums';
 const axios = require('axios');
 
 export const translateText = async (language: Language, targetLanguage: Language, text: string) => {
