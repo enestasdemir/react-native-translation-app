@@ -10,13 +10,6 @@ import StyledText from './StyledText';
 import { COLOR } from '../common/constants/colors';
 import { Language } from '../common/constants/enums';
 
-interface TranslationDirectionProps {
-  sourceLanguage: Language;
-  setSourceLanguage: React.Dispatch<React.SetStateAction<Language>>;
-  destinationLanguage: Language;
-  setDestinationLanguage: React.Dispatch<React.SetStateAction<Language>>;
-}
-
 const StyledView = styled(View)`
   display: flex;
   flex-direction: row;
@@ -45,6 +38,13 @@ const Button = styled(Pressable)`
 const StyledTextContainer = styled(View)`
   width: 80px;
 `;
+
+interface TranslationDirectionProps {
+  sourceLanguage: Language;
+  setSourceLanguage: React.Dispatch<React.SetStateAction<Language>>;
+  destinationLanguage: Language;
+  setDestinationLanguage: React.Dispatch<React.SetStateAction<Language>>;
+}
 
 const TranslationDirection = (props: TranslationDirectionProps) => {
   const { sourceLanguage, setSourceLanguage, destinationLanguage, setDestinationLanguage } = props;

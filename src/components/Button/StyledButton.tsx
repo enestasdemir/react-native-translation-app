@@ -9,11 +9,6 @@ import { COLOR } from '../../common/constants/colors';
 // Components
 import StyledText from '../StyledText';
 
-interface StyledButtonProps extends PressableProps {
-  label: string;
-  buttonStyle?: any;
-}
-
 const Button = styled(Pressable)`
   display: flex;
   flex-direction: row;
@@ -26,6 +21,11 @@ const Button = styled(Pressable)`
   margin-top: 20px;
   border-radius: 2px;
 `;
+
+interface StyledButtonProps extends PressableProps {
+  label: string;
+  buttonStyle?: any;
+}
 
 const StyledButton = (props: StyledButtonProps) => {
   const { label } = props;
