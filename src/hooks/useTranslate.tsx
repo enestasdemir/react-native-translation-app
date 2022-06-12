@@ -16,6 +16,7 @@ export const useTranslate = () => {
   const getData = async () => {
     try {
       const jsonValue = await AsyncStorage.getItem('@translates');
+
       return jsonValue != null ? JSON.parse(jsonValue) : null;
     } catch (e) {
       return;
@@ -26,7 +27,7 @@ export const useTranslate = () => {
   const storeData = async (key: string, value: string) => {
     let currentData = await getData();
 
-    currentData = currentData.filter((data: Record<string, string>) => data.text !== key);
+    currentData = currentData?.filter((data: Record<string, string>) => data.text !== key) || [];
 
     const translateItem = { text: key, translate: value };
     const items = currentData?.length ? [translateItem, ...currentData] : [translateItem];
