@@ -62,6 +62,7 @@ const SpeechToText = (props: Props) => {
     const onSpeechEnd = () => {
       setData((state) => {
         state.end = '√';
+        state.started = '';
 
         return { ...state };
       });
