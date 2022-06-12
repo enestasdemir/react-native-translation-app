@@ -4,10 +4,15 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
+    "android:clear": "cd android && ./gradlew clean && cd ..",
     "ios": "react-native run-ios",
+    "ios:pod": "cd ios && pod install && cd ..",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "tsc": "tsc",
+    "tsc:watch": "tsc --watch",
+    "watchman:clean": "watchman watch-del-all"
   },
   "dependencies": {
     "@react-native-community/masked-view": "0.1.11",
