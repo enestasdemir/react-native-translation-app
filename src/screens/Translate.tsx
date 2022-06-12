@@ -16,7 +16,7 @@ import TranslateButton from '../components/button/TranslateButton';
 import TranslatedText from '../components/TranslatedText';
 
 const Translate = () => {
-  const [translatedText, translate] = useTranslate();
+  const [translate, transletedTextData] = useTranslate();
 
   const [sourceLanguage, setSourceLanguage] = useState<Language>(Language.TR);
   const [destinationLanguage, setDestinationLanguage] = useState<Language>(Language.EN);
@@ -38,7 +38,7 @@ const Translate = () => {
         sourceLanguage={sourceLanguage}
         destinationLanguage={destinationLanguage}
       />
-      <TranslatedText translatedText={translatedText} />
+      <TranslatedText transletedTextData={transletedTextData} />
     </View>
   );
 };
