@@ -1,11 +1,13 @@
 // React
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components/native';
 
 // Commons
 import { Language } from '../common/constants/enums';
 
 // Hooks
 import { useTranslate } from '../hooks/useTranslate';
+import { useFavorites } from '../hooks/useFavorites';
 
 // Components
 import { View } from 'react-native';
@@ -14,8 +16,15 @@ import StyledInput from '../components/StyledInput';
 import TranslationDirection from '../components/TranslationDirection';
 import TranslateButton from '../components/button/TranslateButton';
 import TranslatedText from '../components/TranslatedText';
-import { useFavorites } from '../hooks/useFavorites';
+import SpeechToText from '../components/SpeechToText';
 
+const HeaderContainer = styled(View)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+`;
 interface TranslateScreenProps {
   navigation: any;
 }
@@ -40,8 +49,11 @@ const Translate = (props: TranslateScreenProps) => {
 
   return (
     <View>
-      <StyledText header label="TRANSLATION_APP" />
-      <StyledInput onChangeText={(value) => setText(value)} />
+      <HeaderContainer>
+        <StyledText header label="TRANSLATION_APP" />
+        <SpeechToText sourceLanguage={sourceLanguage} setText={setText} />
+      </HeaderContainer>
+      <StyledInput onChangeText={(value) => setText(value)} value={text} />
       <TranslationDirection
         sourceLanguage={sourceLanguage}
         setSourceLanguage={setSourceLanguage}
