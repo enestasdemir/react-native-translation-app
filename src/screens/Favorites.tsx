@@ -9,7 +9,7 @@ import StyledText from '../components/StyledText';
 const Favorites = () => {
   return (
     <View>
-      <StyledText header label="TRANSLATION_APP" />
+      <StyledText header label="FAVORITES" />
       <FavoritesList />
     </View>
   );
