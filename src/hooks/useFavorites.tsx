@@ -52,6 +52,15 @@ export const useFavorites = () => {
     }
   };
 
+  // Check updates
+  const checkUpdates = useCallback(async () => {
+    const favorites = await AsyncStorage.getItem('@favorites');
+
+    if (favorites) {
+      setFavoriteListData(JSON.parse(favorites));
+    }
+  }, []);
+
   // Initilize storage data
   useEffect(() => {
     getData().then((res) => setFavoriteListData(res));
@@ -69,5 +78,5 @@ export const useFavorites = () => {
     [storeData]
   );
 
-  return { favoriteListData, addFavorite, removeFavorite };
+  return { favoriteListData, addFavorite, removeFavorite, checkUpdates };
 };

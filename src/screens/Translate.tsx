@@ -1,5 +1,5 @@
 // React
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Commons
 import { Language } from '../common/constants/enums';
@@ -14,13 +14,29 @@ import StyledInput from '../components/StyledInput';
 import TranslationDirection from '../components/TranslationDirection';
 import TranslateButton from '../components/button/TranslateButton';
 import TranslatedText from '../components/TranslatedText';
+import { useFavorites } from '../hooks/useFavorites';
 
-const Translate = () => {
+interface TranslateScreenProps {
+  navigation: any;
+}
+
+const Translate = (props: TranslateScreenProps) => {
+  const { navigation } = props;
+
   const [translate, transletedTextData] = useTranslate();
+  const favorites = useFavorites();
 
   const [sourceLanguage, setSourceLanguage] = useState<Language>(Language.TR);
   const [destinationLanguage, setDestinationLanguage] = useState<Language>(Language.EN);
   const [text, setText] = useState('');
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      favorites.checkUpdates();
+    });
+
+    return unsubscribe;
+  }, [favorites, navigation]);
 
   return (
     <View>
@@ -38,7 +54,7 @@ const Translate = () => {
         sourceLanguage={sourceLanguage}
         destinationLanguage={destinationLanguage}
       />
-      <TranslatedText transletedTextData={transletedTextData} />
+      <TranslatedText transletedTextData={transletedTextData} favorites={favorites} />
     </View>
   );
 };
