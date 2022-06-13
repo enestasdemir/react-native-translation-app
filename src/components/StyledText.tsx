@@ -1,6 +1,5 @@
 // React
 import React from 'react';
-import { Text } from 'react-native';
 import styled from 'styled-components/native';
 
 // Utils
@@ -8,6 +7,9 @@ import { translate } from '../common/i18n/i18n';
 
 // Constants
 import { COLOR } from '../common/constants/colors';
+
+// Components
+import { Text } from 'react-native';
 
 interface StyledTextProps {
   label: string;

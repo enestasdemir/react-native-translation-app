@@ -1,3 +1,4 @@
+// Storage
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Get storage data

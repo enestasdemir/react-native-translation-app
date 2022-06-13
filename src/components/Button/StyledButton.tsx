@@ -1,12 +1,12 @@
 // React
 import React from 'react';
-import { Pressable, PressableProps } from 'react-native';
 import styled from 'styled-components/native';
 
 // Commons
 import { COLOR } from '../../common/constants/colors';
 
 // Components
+import { Pressable, PressableProps } from 'react-native';
 import StyledText from '../StyledText';
 
 const Button = styled(Pressable)`

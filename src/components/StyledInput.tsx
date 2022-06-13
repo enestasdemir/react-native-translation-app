@@ -1,6 +1,5 @@
 // React
 import React from 'react';
-import { TextInput, TextInputProps } from 'react-native';
 import styled from 'styled-components/native';
 
 // Utils
@@ -8,6 +7,9 @@ import { translate } from '../common/i18n/i18n';
 
 // Constants
 import { COLOR } from '../common/constants/colors';
+
+// Components
+import { TextInput, TextInputProps } from 'react-native';
 
 const CustomInput = styled(TextInput)`
   display: flex;

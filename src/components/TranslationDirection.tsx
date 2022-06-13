@@ -6,7 +6,7 @@ import styled from 'styled-components/native';
 import { Image, Pressable, View } from 'react-native';
 import StyledText from './StyledText';
 
-// Constants & Enums
+// Commons
 import { COLOR } from '../common/constants/colors';
 import { Language } from '../common/constants/enums';
 

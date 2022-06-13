@@ -8,7 +8,7 @@ import { COLOR } from '../common/constants/colors';
 // Hooks
 import { useFavorites } from '../hooks/useFavorites';
 
-// Component
+// Components
 import { FlatList, Image, Pressable, Text, View } from 'react-native';
 
 const StyledView = styled(View)`

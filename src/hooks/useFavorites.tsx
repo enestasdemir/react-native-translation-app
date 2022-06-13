@@ -1,5 +1,7 @@
 // React
 import { useCallback, useEffect, useState } from 'react';
+
+// Utils
 import ValueUtil from '../utils/valueUtil';
 
 export const useFavorites = () => {
