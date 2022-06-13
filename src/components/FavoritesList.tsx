@@ -67,7 +67,7 @@ const FavoitesList = () => {
           <StyledFavoriteTranslate>{data?.item?.translate}</StyledFavoriteTranslate>
         </StyledTextContainer>
         <Pressable onPress={() => removeItem(data.item)}>
-          <StyledImage source={require('./../assets/star.png')} />
+          <StyledImage source={require('./../assets/trash-bin.png')} />
         </Pressable>
       </StyledItem>
     );
