@@ -32,7 +32,7 @@ interface TranslateScreenProps {
 const Translate = (props: TranslateScreenProps) => {
   const { navigation } = props;
 
-  const [translate, transletedTextData] = useTranslate();
+  const [translate, transletedTextData, loading] = useTranslate();
   const favorites = useFavorites();
 
   const [sourceLanguage, setSourceLanguage] = useState<Language>(Language.TR);
@@ -65,6 +65,7 @@ const Translate = (props: TranslateScreenProps) => {
         text={text}
         sourceLanguage={sourceLanguage}
         destinationLanguage={destinationLanguage}
+        loading={loading}
       />
       <TranslatedText transletedTextData={transletedTextData} favorites={favorites} />
     </View>

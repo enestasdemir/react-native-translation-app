@@ -13,6 +13,7 @@ import ValueUtil from '../utils/valueUtil';
 export const useTranslate = () => {
   const [translatedText, setTranslatedText] = useState<any>();
   const [transletedTextData, setTransletedTextData] = useState<any>();
+  const [loading, setLoading] = useState<any>();
 
   // Initilize storage data
   useEffect(() => {
@@ -25,6 +26,7 @@ export const useTranslate = () => {
 
     try {
       if (text.trim()) {
+        setLoading(true);
         apiResponse = await translateText(language, targetLanguage, text);
 
         setTranslatedText(apiResponse);
@@ -35,10 +37,12 @@ export const useTranslate = () => {
       apiResponse = error;
 
       setTranslatedText(null);
+    } finally {
+      setLoading(false);
     }
 
     return apiResponse;
   }, []);
 
-  return [translate, transletedTextData, translatedText];
+  return [translate, transletedTextData, loading, translatedText];
 };

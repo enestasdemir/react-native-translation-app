@@ -12,16 +12,17 @@ interface TranslateButtonProps {
   sourceLanguage: Language;
   destinationLanguage: Language;
   text: string;
+  loading: boolean;
 }
 
 const TranslateButton = (props: TranslateButtonProps) => {
-  const { translate, sourceLanguage, destinationLanguage, text } = props;
+  const { translate, sourceLanguage, destinationLanguage, text, loading } = props;
 
   const handleOnPress = () => {
     translate(sourceLanguage, destinationLanguage, text);
   };
 
-  return <StyledButton onPress={handleOnPress} label="TRANSLATE" />;
+  return <StyledButton loading={loading} onPress={handleOnPress} label="TRANSLATE" />;
 };
 
 export default TranslateButton;

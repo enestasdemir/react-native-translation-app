@@ -6,7 +6,7 @@ import styled from 'styled-components/native';
 import { COLOR } from '../../common/constants/colors';
 
 // Components
-import { Pressable, PressableProps } from 'react-native';
+import { Image, Pressable, PressableProps } from 'react-native';
 import StyledText from '../StyledText';
 
 const Button = styled(Pressable)`
@@ -22,24 +22,35 @@ const Button = styled(Pressable)`
   border-radius: 2px;
 `;
 
+const StyledImage = styled(Image)`
+  width: 24px;
+  height: 24px;
+`;
+
 interface StyledButtonProps extends PressableProps {
   label: string;
   buttonStyle?: any;
+  loading?: boolean;
 }
 
 const StyledButton = (props: StyledButtonProps) => {
-  const { label } = props;
+  const { label, loading } = props;
 
   return (
     <Button
       {...props}
+      disabled={loading}
       style={({ pressed }) => [
         {
           backgroundColor: pressed ? COLOR.LIGHTER : COLOR.DETAIL
         }
       ]}
     >
-      <StyledText buttonLabel label={label} />
+      {loading ? (
+        <StyledImage source={require('./../../assets/loading.gif')} />
+      ) : (
+        <StyledText buttonLabel label={label} />
+      )}
     </Button>
   );
 };
