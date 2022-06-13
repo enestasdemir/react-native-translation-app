@@ -5,6 +5,9 @@ import styled from 'styled-components/native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+// Utils
+import { translate } from './src/common/i18n/i18n';
+
 // Screens
 import Translate from './src/screens/Translate';
 import Favorites from './src/screens/Favorites';
@@ -23,6 +26,7 @@ const App = () => (
         name="Translate"
         component={Translate}
         options={({ navigation }) => ({
+          title: translate('TRANSLATE'),
           headerRight: () => (
             <Pressable onPress={() => navigation.navigate('Favorites')}>
               <StyledImage source={require('./src/assets/star.png')} />
@@ -30,7 +34,13 @@ const App = () => (
           )
         })}
       />
-      <Stack.Screen name="Favorites" component={Favorites} />
+      <Stack.Screen
+        name="Favorites"
+        component={Favorites}
+        options={{
+          title: translate('FAVORITES')
+        }}
+      />
     </Stack.Navigator>
   </NavigationContainer>
 );
