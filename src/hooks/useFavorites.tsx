@@ -11,6 +11,7 @@ export const useFavorites = () => {
   }, []);
 
   // Check updates
+  // TODO: Instead of such functions, redux can be used for state management.
   const checkUpdates = useCallback(async () => {
     const favorites = await ValueUtil.getFavorites();
 
