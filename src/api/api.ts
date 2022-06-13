@@ -4,6 +4,9 @@ import axios from 'axios';
 // Commons
 import { Language } from '../common/constants/enums';
 
+// Config
+import Config from 'react-native-config';
+
 export const translateText = async (language: Language, targetLanguage: Language, text: string) => {
   const body = {
     source: language,
@@ -13,11 +16,11 @@ export const translateText = async (language: Language, targetLanguage: Language
 
   const options = {
     method: 'POST',
-    url: 'https://deep-translate1.p.rapidapi.com/language/translate/v2',
+    url: Config.API_URL,
     headers: {
       'content-type': 'application/json',
-      'X-RapidAPI-Key': 'IxlqM6A2vHmshULjdgyqtfo8BsvUp1MA6Kwjsnw7hy896Y1KXK',
-      'X-RapidAPI-Host': 'deep-translate1.p.rapidapi.com'
+      'X-RapidAPI-Key': Config.API_TOKEN,
+      'X-RapidAPI-Host': Config.API_HOST
     },
     data: body
   };
