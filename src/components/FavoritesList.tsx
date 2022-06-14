@@ -59,7 +59,7 @@ const FavoitesList = () => {
     removeFavorite(item);
   };
 
-  const renderItem = (data: any) => {
+  const renderItem = (data: { item: Record<string, string> }) => {
     return (
       <StyledItem key={data?.item?.translate}>
         <StyledTextContainer>

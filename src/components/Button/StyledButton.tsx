@@ -29,7 +29,6 @@ const StyledImage = styled(Image)`
 
 interface StyledButtonProps extends PressableProps {
   label: string;
-  buttonStyle?: any;
   loading?: boolean;
 }
 

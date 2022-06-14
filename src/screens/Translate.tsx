@@ -32,7 +32,7 @@ interface TranslateScreenProps {
 const Translate = (props: TranslateScreenProps) => {
   const { navigation } = props;
 
-  const [translate, transletedTextData, loading] = useTranslate();
+  const { translate, transletedTextData, loading } = useTranslate();
   const favorites = useFavorites();
 
   const [sourceLanguage, setSourceLanguage] = useState<Language>(Language.TR);
