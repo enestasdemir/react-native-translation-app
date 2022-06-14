@@ -1,5 +1,5 @@
 // Axios
-import axios from 'axios';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 
 // Commons
 import { Language } from '../common/constants/enums';
@@ -27,10 +27,10 @@ export const translateText = async (language: Language, targetLanguage: Language
 
   return axios
     .request(options)
-    .then(function (response: any) {
+    .then(function (response: AxiosResponse) {
       return response.data.data.translations.translatedText;
     })
-    .catch(function (error: any) {
+    .catch(function (error: AxiosError) {
       return error;
     });
 };

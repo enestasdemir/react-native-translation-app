@@ -7,6 +7,7 @@ import { FlatList, Image, Pressable, Text, View } from 'react-native';
 
 // Commons
 import { COLOR } from '../common/constants/colors';
+import { UseFavoritesType } from '../hooks/useFavorites';
 
 const StyledView = styled(View)`
   display: flex;
@@ -49,8 +50,8 @@ const StyledTranslate = styled(Text)`
   font-size: 20px;
 `;
 interface TranslatedTextProps {
-  transletedTextData: [Record<string, string>];
-  favorites: any;
+  transletedTextData: Array<Record<string, string>> | undefined;
+  favorites: UseFavoritesType;
 }
 
 const TranslatedText = (props: TranslatedTextProps) => {
@@ -70,7 +71,7 @@ const TranslatedText = (props: TranslatedTextProps) => {
     }
   };
 
-  const renderItem = (data: any) => {
+  const renderItem = (data: { item: Record<string, string> }) => {
     const isFavorite = checkFavorite(data?.item);
 
     return (

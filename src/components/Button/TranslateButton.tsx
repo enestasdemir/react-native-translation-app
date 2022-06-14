@@ -8,7 +8,7 @@ import { Language } from '../../common/constants/enums';
 import StyledButton from './StyledButton';
 
 interface TranslateButtonProps {
-  translate: any;
+  translate: (language: Language, targetLanguage: Language, text: string) => Promise<any>;
   sourceLanguage: Language;
   destinationLanguage: Language;
   text: string;

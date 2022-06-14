@@ -10,10 +10,17 @@ import { Language } from '../common/constants/enums';
 // Utils
 import ValueUtil from '../utils/valueUtil';
 
+export type UseTranslateType = {
+  translate: (language: Language, targetLanguage: Language, text: string) => Promise<any>;
+  transletedTextData: Record<string, string>[] | undefined;
+  loading: boolean | undefined;
+  translatedText: string | undefined;
+};
+
 export const useTranslate = () => {
-  const [translatedText, setTranslatedText] = useState<any>();
-  const [transletedTextData, setTransletedTextData] = useState<any>();
-  const [loading, setLoading] = useState<any>();
+  const [translatedText, setTranslatedText] = useState<string>();
+  const [transletedTextData, setTransletedTextData] = useState<Array<Record<string, string>>>();
+  const [loading, setLoading] = useState<boolean>(false);
 
   // Initilize storage data
   useEffect(() => {
@@ -36,7 +43,7 @@ export const useTranslate = () => {
     } catch (error) {
       apiResponse = error;
 
-      setTranslatedText(null);
+      setTranslatedText('');
     } finally {
       setLoading(false);
     }
@@ -44,5 +51,5 @@ export const useTranslate = () => {
     return apiResponse;
   }, []);
 
-  return [translate, transletedTextData, loading, translatedText];
+  return { translate, transletedTextData, loading, translatedText };
 };

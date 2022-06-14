@@ -4,8 +4,15 @@ import { useCallback, useEffect, useState } from 'react';
 // Utils
 import ValueUtil from '../utils/valueUtil';
 
+export type UseFavoritesType = {
+  favoriteListData: Record<string, string>[] | undefined;
+  addFavorite: (item: Record<string, string>) => Promise<void>;
+  removeFavorite: (item: Record<string, string>) => Promise<void>;
+  checkUpdates: () => Promise<void>;
+};
+
 export const useFavorites = () => {
-  const [favoriteListData, setFavoriteListData] = useState<any>();
+  const [favoriteListData, setFavoriteListData] = useState<Array<Record<string, string>>>();
 
   // Initialize storage data
   useEffect(() => {
